@@ -1,29 +1,30 @@
 module.exports = (sequelize, DataTypes) => {
-    const Income = sequelize.define("income", {
-      id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
-      },
+    const Income = sequelize.define('Income', {
       amount: {
         type: DataTypes.FLOAT,
-        allowNull: false
+        allowNull: false,
       },
       source: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       date: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: false,
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id'
+        }
       }
     });
   
-    Income.associate = (models) => {
-      Income.belongsTo(models.User, {
-        foreignKey: 'userId',
-        as: 'user'
-      });
+    // Define associations here if necessary
+    Income.associate = models => {
+      Income.belongsTo(models.User, { foreignKey: 'userId' });
     };
   
     return Income;

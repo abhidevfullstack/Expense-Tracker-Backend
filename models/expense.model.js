@@ -1,29 +1,30 @@
 module.exports = (sequelize, DataTypes) => {
-    const Expense = sequelize.define("expense", {
-      id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
-      },
+    const Expense = sequelize.define('Expense', {
       amount: {
         type: DataTypes.FLOAT,
-        allowNull: false
+        allowNull: false,
       },
       category: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       date: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: false,
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id'
+        }
       }
     });
   
-    Expense.associate = (models) => {
-      Expense.belongsTo(models.User, {
-        foreignKey: 'userId',
-        as: 'user'
-      });
+    // Define associations here if necessary
+    Expense.associate = models => {
+      Expense.belongsTo(models.User, { foreignKey: 'userId' });
     };
   
     return Expense;

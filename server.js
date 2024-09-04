@@ -17,7 +17,7 @@ app.use('/api/incomes', incomeRoutes);
 app.use('/api/expenses', expenseRoutes);
 
 // Sync database
-db.sequelize.sync();
+db.sequelize.sync({force:true});
 
 // Start server
 const PORT = process.env.PORT || 5000;
