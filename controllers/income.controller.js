@@ -1,5 +1,6 @@
 const db = require('../models');
-const Income = db.incomes;
+const Income = db.Income
+
 
 exports.createIncome = async (req, res) => {
   try {
