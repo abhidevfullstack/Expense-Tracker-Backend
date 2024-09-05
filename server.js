@@ -10,14 +10,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const authRoutes = require('./routes/auth.routes');
 const incomeRoutes = require('./routes/income.routes');
 const expenseRoutes = require('./routes/expense.routes');
+const dashboardRoutes = require('./routes/dashboard.routes');
 
 // Use routes
 app.use('/api/auth', authRoutes);
 app.use('/api/incomes', incomeRoutes);
 app.use('/api/expenses', expenseRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 // Sync database
-db.sequelize.sync({force:true});
+db.sequelize.sync();
 
 // Start server
 const PORT = process.env.PORT || 5000;

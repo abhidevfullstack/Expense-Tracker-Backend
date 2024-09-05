@@ -1,5 +1,5 @@
 const db = require('../models');
-const Expense = db.expenses;
+const Expense = db.Expense;
 
 exports.createExpense = async (req, res) => {
   try {
