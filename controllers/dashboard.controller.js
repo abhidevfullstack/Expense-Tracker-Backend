@@ -51,7 +51,8 @@ exports.getIncomeBySource = async (req, res) => {
       // Convert the result to a JSON object where key is the source and value is the total income
       const incomeBySourceObj = {};
       incomeBySource.forEach(income => {
-        incomeBySourceObj[income.source] = income.dataValues.totalIncome;
+        incomeBySourceObj['source'] = income.source;
+        incomeBySourceObj['amount'] = income.dataValues.totalIncome;
       });
   
       // Return the result as a JSON object
